@@ -73,14 +73,12 @@ class PollReader():
     def highest_polling_candidate(self):
         harris_max = max(self.data_dict['Harris result'])
         trump_max = max(self.data_dict['Trump result'])
-        harris_percent = round(harris_max * 100, 1)
-        trump_percent = round(trump_max * 100, 1)
         if harris_max > trump_max:
-            return "Harris " + str(harris_percent) + "%"
+            return f"Harris: {harris_max * 100}%"
         elif harris_max < trump_max:
-            return "Trump " + str(trump_percent) + "%"
+            return f"Trump: {trump_max * 100}%"
         else: 
-            return "EVEN " + str(harris_percent) + "%"
+            return f"Even: {harris_max * 100}%"
         
         """
         This method should iterate through the result columns and return
@@ -96,6 +94,10 @@ class PollReader():
 
 
     def likely_voter_polling_average(self):
+        harris_sum = 0
+        trump_sum = 0
+        count = 0
+        for i in range(len):
         """
         Calculate the average polling percentage for each candidate among likely voters.
 
