@@ -44,6 +44,7 @@ class PollReader():
         }
 
     def build_data_dict(self):
+        
         """
         Reads all of the raw data from the CSV and builds a dictionary where
         each key is the name of a column in the CSV, and each value is a list
@@ -70,14 +71,16 @@ class PollReader():
 
 
     def highest_polling_candidate(self):
-        max(self.data_dict['Harris result'])
-        max(self.data_dict['Trump result'])
-        if max(self.data_dict['Harris result']) > max(self.data_dict['Trump result']):
-            return "Harris Wins."
-        elif max(self.data_dict['Harris result']) < max(self.data_dict['Trump result']):
-            return "Trump Wins."
-        elif max(self.data_dict['Harris result']) > max(self.data_dict['Trump result']):
-            return "EVEN"
+        harris_max = max(self.data_dict['Harris result'])
+        trump_max = max(self.data_dict['Trump result'])
+        harris_percent = round(harris_max * 100, 1)
+        trump_percent = round(trump_max * 100, 1)
+        if harris_max > trump_max:
+            return "Harris " + str(harris_percent) + "%"
+        elif harris_max < trump_max:
+            return "Trump " + str(trump_percent) + "%"
+        else: 
+            return "EVEN " + str(harris_percent) + "%"
         
         """
         This method should iterate through the result columns and return
