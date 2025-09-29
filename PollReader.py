@@ -44,7 +44,7 @@ class PollReader():
         }
 
     def build_data_dict(self):
-        
+
         """
         Reads all of the raw data from the CSV and builds a dictionary where
         each key is the name of a column in the CSV, and each value is a list
@@ -64,8 +64,8 @@ class PollReader():
             # map each part of the row to the correct column
             self.data_dict['month'].append(seperated[0])
             self.data_dict['date'].append(int(seperated[1]))
-            self.data_dict['sample'].append(int(seperated[2]))
-            self.data_dict['sample type'].append(seperated[2])
+            self.data_dict['sample'].append(int(seperated[2].split(" ")[0]))
+            self.data_dict['sample type'].append(seperated[2].split(" ")[1])
             self.data_dict['Harris result'].append(float(seperated[3]))
             self.data_dict['Trump result'].append(float(seperated[4]))
 
